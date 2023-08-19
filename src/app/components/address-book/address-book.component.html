@@ -1,0 +1,28 @@
+<h1>Address Book</h1>
+<p>Welcome to the Address Book Page!</p>
+
+<div class="content" role="main">
+  <input
+    type="text"
+    [(ngModel)]="searchString"
+    placeholder="Search by name..."
+  />
+
+  <a routerLink="/create-address">Create New Address</a>
+
+  <p *ngIf="loading">Loading...</p>
+  <div class="scrollable-area">
+    <!-- <li *ngFor="let address of addresses">
+        <app-address-item [address]="address" (delete)="onDeleteAddress($event)">
+        </app-address-item>
+      </li> -->
+    <app-product
+      *ngFor="let product of productService.products | filterProducts : searchString"
+      [product]="product"
+    >
+    </app-product>
+  </div>
+
+  <app-rocket-smoke></app-rocket-smoke>
+  <app-cloud></app-cloud>
+</div>

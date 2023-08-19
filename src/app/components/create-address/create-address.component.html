@@ -1,0 +1,5 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <input type="text" placeholder="Occupant" formControlName="title" />
+  <p style="color: red" *ngIf="title.errors?.minlength">not valid value</p>
+  <button type="submit">Create</button>
+</form>

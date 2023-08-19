@@ -1,0 +1,12 @@
+button {
+    background: none;
+    color: red;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    margin: 16px;
+  }
+
+container {
+    margin-top: 6px;
+}
