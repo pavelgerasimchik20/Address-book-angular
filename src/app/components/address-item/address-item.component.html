@@ -1,7 +1,18 @@
 <div class="container">
-  {{ address.name }}, {{ address.street }}, {{ address.city }},
-  {{ address.state }} {{ address.zip }}
-  <button (click)="onDelete()">
-    <i class="fa fa-trash"></i>
-  </button>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{ address.name }}</h5>
+      <p class="card-text">
+        <strong>ID:</strong> {{ address.Id }} <br>
+        <strong>Street:</strong> {{ address.street }} <br>
+        <strong>City:</strong> {{ address.city }} <br>
+        <strong>Building:</strong> {{ address.building }} <br>
+        <strong>Apartment:</strong> {{ address.apartment }}
+      </p>
+      <button class="btn btn-danger" (click)="onDelete()">
+        <i class="fa fa-trash"></i> Delete
+      </button>
+    </div>
+  </div>
 </div>
+

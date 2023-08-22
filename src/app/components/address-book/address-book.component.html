@@ -12,15 +12,12 @@
 
   <p *ngIf="loading">Loading...</p>
   <div class="scrollable-area">
-    <!-- <li *ngFor="let address of addresses">
-        <app-address-item [address]="address" (delete)="onDeleteAddress($event)">
-        </app-address-item>
-      </li> -->
-    <app-product
-      *ngFor="let product of productService.products | filterProducts : searchString"
-      [product]="product"
+    <app-address-item
+      *ngFor="let address of addressService.addresses | filterAddress : searchString"
+      [address]="address"
+      (delete)="handleDelete($event)">
     >
-    </app-product>
+    </app-address-item>
   </div>
 
   <app-rocket-smoke></app-rocket-smoke>

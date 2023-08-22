@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Address } from '../../models/address.model';
-import { IProduct } from 'src/app/models/product.model';
-import { ProductService } from 'src/app/services/product.service';
-import { Observable } from 'rxjs';
+import { AddressService } from 'src/app/services/address.service';
 
 @Component({
   selector: 'app-address-book',
@@ -11,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class AddressBookComponent implements OnInit {
 
-  constructor(public productService: ProductService) {}
+  constructor(public addressService: AddressService) {}
   
     searchString: string = '';
     loading = false;
@@ -19,12 +16,17 @@ export class AddressBookComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true;
-    this.productService.getAll().subscribe(() => {
+    this.addressService.getAll().subscribe(() => {
       this.loading = false;
-      console.log(this.productService.products)
     });
   }
 
-  onDeleteAddress(id: number) {}
+  handleDelete(deletedId: string) {
+    // Logic to handle the deletion in parent component if needed
+    const index = this.addressService.addresses.findIndex(address => address.Id === deletedId);
+    if (index !== -1) {
+        this.addressService.addresses.splice(index, 1);
+    }
+}
 
 }

@@ -1,18 +1,33 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Address } from '../../models/address.model';
-import { IProduct } from 'src/app/models/product.model';
+import { IAddress } from '../../models/address.model';
+import { AddressService } from 'src/app/services/address.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-address-item',
   templateUrl: './address-item.component.html',
-  styleUrls: ['./address-item.component.css']
+  styleUrls: ['./address-item.component.css'],
 })
 export class AddressItemComponent {
-  @Input() product: IProduct;
-  @Input() address: Address;
-  @Output() delete = new EventEmitter<number>();
+  constructor(private router: Router, private addressService: AddressService) {}
+
+  @Input() address: IAddress;
+  @Output() delete = new EventEmitter<string>();
 
   onDelete() {
-    this.delete.emit(this.address.id);
-  }
+    if (confirm('Are you sure you want to delete this address?')) {
+        this.addressService.delete(this.address.Id).subscribe({
+          next: () => {
+              this.delete.emit(this.address.Id);
+          },
+          error: (error) => {
+              console.error(error);
+          },
+          complete: () => {
+            console.log('Address deleted successfully.');
+            this.router.navigate(['/address-book']);
+          }
+      });
+    }
+}
 }

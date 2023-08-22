@@ -10,3 +10,26 @@ button {
 container {
     margin-top: 6px;
 }
+
+.card {
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(73, 0, 0, 0.6);
+}
+
+.card-title {
+  font-size: 20px;
+}
+
+.card-text {
+  font-size: 16px;
+}
+
+.btn-danger {
+  margin-top: 8px;
+}
