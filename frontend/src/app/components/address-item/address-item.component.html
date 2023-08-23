@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="card">
-    <div class="card-body">
+  <div class="card" (click)="openAddress(address.Id)">
+    <div class="card-body" >
       <h5 class="card-title">{{ address.name }}</h5>
       <p class="card-text">
         <strong>ID:</strong> {{ address.Id }} <br>
@@ -9,7 +9,7 @@
         <strong>Building:</strong> {{ address.building }} <br>
         <strong>Apartment:</strong> {{ address.apartment }}
       </p>
-      <button class="btn btn-danger" (click)="onDelete()">
+      <button class="btn btn-danger" (click)="onDelete(); $event.stopPropagation();">
         <i class="fa fa-trash"></i> Delete
       </button>
     </div>

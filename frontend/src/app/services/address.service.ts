@@ -2,15 +2,24 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable, catchError, delay, throwError, tap } from "rxjs";
 import { IAddress } from "../models/address.model";
+import { NotificationService } from "./notification.service";
 
 @Injectable({
     providedIn:'root'
 })
 
 export class AddressService {
-    constructor(private http: HttpClient){}
+    constructor(private http: HttpClient, private notificationService: NotificationService){}
 
     addresses: IAddress[] = []
+    address: IAddress = {
+        Id: '', 
+        name: '', 
+        city: '', 
+        street: '', 
+        building: '', 
+        apartment: ''
+      };;
 
     getAll(): Observable<IAddress[]> {
         return this.http.get<IAddress[]>("http://localhost:3000/dev/v1/addresses").pipe(
@@ -30,6 +39,22 @@ export class AddressService {
             )
     }
 
+    update(id: string, body: IAddress): Observable<IAddress> {
+        return this.http.put<IAddress>(`http://localhost:3000/dev/v1/addresses/${id}`, body)
+          .pipe(
+            tap(updatedAddress => {
+              const index = this.addresses.findIndex(address => address.Id === id);
+              if (index !== -1) {
+                this.addresses[index] = updatedAddress; // Replace old address with the updated one
+                this.notificationService.alert('Address updated successfully!');
+              } else {
+                this.notificationService.alert('Address not found in the list, but it might have been updated in the database.');
+              }
+            }),
+            catchError(this.errorHandler)
+          );
+    }
+
     delete(id: string) {
         return this.http.delete<IAddress>(`http://localhost:3000/dev/v1/addresses/${id}`)
           .pipe(
@@ -41,6 +66,14 @@ export class AddressService {
             }),
             catchError(this.errorHandler)
           );
+    }
+
+    getById(id: string): Observable<IAddress> {
+        return this.http.get<IAddress>(`http://localhost:3000/dev/v1/addresses/${id}`)
+            .pipe(
+                tap(address => this.address = address),
+                catchError(this.errorHandler)
+            );
     }
 
     private errorHandler(error: HttpErrorResponse){

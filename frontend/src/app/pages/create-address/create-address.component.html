@@ -1,4 +1,4 @@
-<form (submit)="submit(nameInput.value, cityInput.value, streetInput.value, buildingInput.value, apartmentInput.value)">
+<form (submit)="submit(nameInput.value, cityInput.value, streetInput.value, buildingInput.value, apartmentInput.value)" class="nice-form">
   <input type="text" placeholder="name" #nameInput />
   <input type="text" placeholder="city" #cityInput />
   <input type="text" placeholder="street" #streetInput />
@@ -6,3 +6,5 @@
   <input type="text" placeholder="apartment" #apartmentInput />
   <button type="submit">Create</button>
 </form>
+<app-rocket-smoke></app-rocket-smoke>
+<app-cloud></app-cloud>

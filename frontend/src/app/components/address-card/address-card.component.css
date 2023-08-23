@@ -1,0 +1,63 @@
+/* address-card.component.css */
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+
+.card {
+    border: none;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.form-control {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 10px 12px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #495057;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #fff;
+    background-clip: padding-box;
+}
+
+.form-control:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.btn-warning {
+    width: 160px;
+    height: 40px;
+    color: #212529;
+    background-color: #ffc107;
+    border-color: #ffc107;
+    border-radius: 16px;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-warning:hover {
+    color: #212529;
+    background-color: #ffca2c;
+    border-color: #ffc720;
+}
+
+.btn-warning:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.5);
+}
+
+.fa-edit {
+    margin-right: 5px;
+}

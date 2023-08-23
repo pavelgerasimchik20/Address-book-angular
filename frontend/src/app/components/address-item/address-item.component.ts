@@ -16,18 +16,35 @@ export class AddressItemComponent {
 
   onDelete() {
     if (confirm('Are you sure you want to delete this address?')) {
-        this.addressService.delete(this.address.Id).subscribe({
-          next: () => {
-              this.delete.emit(this.address.Id);
-          },
-          error: (error) => {
-              console.error(error);
-          },
-          complete: () => {
-            console.log('Address deleted successfully.');
-            this.router.navigate(['/address-book']);
-          }
+      this.addressService.delete(this.address.Id).subscribe({
+        next: () => {
+          this.delete.emit(this.address.Id);
+        },
+        error: (error) => {
+          console.error(error);
+        },
+        complete: () => {
+          console.log('Address deleted successfully.');
+          this.router.navigate(['/address-book']);
+        },
       });
     }
-}
+  }
+
+  openAddress(id: string) {
+    this.addressService.getById(id).subscribe({
+      next: () => {
+        console.log(id)
+        console.log(this.addressService.address)
+      },
+      error: (error) => {
+        console.error(error);
+      },
+      complete: () => {
+        console.log('Address passed successfully.');
+        this.router.navigate(['/address-card', id]);
+      },
+    });
+    
+  }
 }

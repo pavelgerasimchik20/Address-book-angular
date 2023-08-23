@@ -14,6 +14,7 @@ import { AddressItemComponent } from './components/address-item/address-item.com
 import { CreateAddressComponent } from './pages/create-address/create-address.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FilterAddressPipe } from './pipes/filter-address.pipe';
+import { AddressCardComponent } from './components/address-card/address-card.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FilterAddressPipe } from './pipes/filter-address.pipe';
     CloudComponent,
     AddressItemComponent,
     CreateAddressComponent,
-    FilterAddressPipe
+    FilterAddressPipe,
+    AddressCardComponent
   ],
   imports: [
     BrowserModule,

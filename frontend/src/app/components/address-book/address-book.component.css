@@ -35,6 +35,10 @@
   scrollbar-width: none;
 }
 
+h1, p {
+  margin-left: 12px;
+}
+
 
 
 input {

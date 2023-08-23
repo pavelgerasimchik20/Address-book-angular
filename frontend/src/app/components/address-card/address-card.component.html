@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">
+          <input [(ngModel)]="address.name" class="form-control" placeholder="Name">
+        </h5>
+        <p class="card-text">
+          <strong>ID:</strong> <input [(ngModel)]="address.Id" class="form-control" placeholder="ID"><br>
+          <strong>Street:</strong> <input [(ngModel)]="address.street" class="form-control" placeholder="Street"><br>
+          <strong>City:</strong> <input [(ngModel)]="address.city" class="form-control" placeholder="City"><br>
+          <strong>Building:</strong> <input [(ngModel)]="address.building" class="form-control" placeholder="Building"><br>
+          <strong>Apartment:</strong> <input [(ngModel)]="address.apartment" class="form-control" placeholder="Apartment">
+        </p>
+        <button class="btn btn-warning" (click)="onUpdate(address.Id)">
+          <i class="fa fa-edit"></i> Update
+        </button>
+      </div>
+    </div>
+  </div>
+  <app-rocket-smoke></app-rocket-smoke>
+  <app-cloud></app-cloud>
+  

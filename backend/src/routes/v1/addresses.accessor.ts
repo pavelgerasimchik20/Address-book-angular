@@ -70,7 +70,6 @@ router.post('/', async (req: Request, res: Response) => {
   }
 });
 
-
 // UPDATE BY ID
 router.put('/:id', async (req: Request, res: Response) => {
   try {
@@ -82,13 +81,16 @@ router.put('/:id', async (req: Request, res: Response) => {
       Key: {
         "Id": id
       },
-      UpdateExpression: "set name = :name, city = :city, street = :street, building = :building, apartment = :apartment",
+      UpdateExpression: "set #nameAttr = :name, city = :city, street = :street, building = :building, apartment = :apartment",
       ExpressionAttributeValues: {
         ":name": name,
         ":city": city,
         ":street": street,
         ":building": building,
         ":apartment": apartment
+      },
+      ExpressionAttributeNames: {
+        "#nameAttr": "name"  // This substitutes the reserved keyword "name"
       },
       ReturnValues: "UPDATED_NEW"
     };
