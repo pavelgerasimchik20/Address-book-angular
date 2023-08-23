@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "dynamodb-admin": "^4.5.0",
+    "express": "^4.18.2",
+    "serverless-http": "^3.2.0"
+  },
+  "scripts": {
+    "build": "rimraf dist && tsc",
+    "start": "ts-node src/app.ts",
+    "clientdb": "node src/dynamoAdmin.js"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "rimraf": "^5.0.1",
+    "serverless-offline": "^12.0.4",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
+  }
+}
